@@ -6,19 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".PostActivity">
 
-    <include
-        android:id="@+id/update_post_page_toolbar"
-        layout="@layout/app_bar_layout" />
-
     <EditText
         android:id="@+id/post_title"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="80dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-2dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="508dp"
+        android:layout_marginStart="-4dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginBottom="529dp"
         android:ems="10"
         android:hint="Write Title of what you want to post"
         android:inputType="textCapWords" />
@@ -31,7 +28,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="109dp"
-        android:layout_marginBottom="65dp"
+        android:layout_marginBottom="38dp"
         android:background="@color/colorPrimary"
         android:text="Update Post"
         android:textColor="@android:color/white"
@@ -40,25 +37,26 @@
     <ImageButton
         android:id="@+id/select_post_image"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="201dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-4dp"
-        android:layout_marginBottom="195dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="306dp"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/abc_vector_test" />
+        app:srcCompat="@drawable/image" />
 
     <EditText
         android:id="@+id/post_description"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="409dp"
+        android:layout_height="182dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-2dp"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="129dp"
+        android:layout_marginBottom="103dp"
+        android:background="@color/cardview_shadow_end_color"
         android:ems="10"
-        android:hint="Write something about your image here..."
+        android:hint="Type Title of your story."
         android:inputType="textMultiLine" />
 
 </RelativeLayout>
