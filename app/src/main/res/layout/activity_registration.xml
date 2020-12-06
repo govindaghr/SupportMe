@@ -10,33 +10,39 @@
     android:orientation="vertical">
 
     <!-- TextView for heading -->
+
+    <!-- Edit text for email -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="35dp"
+        android:textColor="@color/colorAccent"
+        android:textStyle="italic"
+        android:layout_marginBottom="50dp"
+        android:layout_gravity="center"
 
         android:text="Register" />
 
-    <!-- Edit text for email -->
     <EditText
         android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="391dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
         android:hint="Enter your Email" />
 
     <!-- Edit text for password -->
     <EditText
         android:id="@+id/passwd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="382dp"
+        android:layout_height="64dp"
+        android:background="@color/cardview_shadow_start_color"
+        android:layout_marginBottom="15dp"
         android:hint="Enter your Password"
         android:inputType="textPassword" />
 
     <!-- Button for register with text "Register" -->
-    <Button
-        android:id="@+id/btnregister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register" />
 
     <!-- ProgressBar for loading time -->
     <ProgressBar
@@ -45,5 +51,17 @@
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btnregister"
+        android:layout_width="147dp"
+        android:layout_gravity="center"
+        android:textStyle="italic"
+        android:textSize="20"
+        android:textColor="@color/cardview_light_background"
+        android:background="@color/design_default_color_secondary_variant"
+
+        android:layout_height="58dp"
+        android:text="Register" />
 
 </LinearLayout>
