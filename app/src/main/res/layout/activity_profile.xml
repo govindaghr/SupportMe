@@ -12,13 +12,14 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <!--<com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/my_profile_pic"
-                android:layout_width="300dp"
+                android:layout_width="300dp
                 android:layout_height="300dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
@@ -30,7 +31,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Profile Name"
-                android:layout_below="@+id/my_profile_pic"
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
                 android:textAllCaps="false"
@@ -53,12 +53,14 @@
                 android:id="@+id/my_profile_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="italic"
+
                 android:text="Hey there, i ma using social app, developed by us"
                 android:layout_below="@+id/my_username"
                 android:layout_marginTop="5dp"
                 android:textAlignment="center"
                 android:textAllCaps="false"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@android:color/secondary_text_light"
                 android:textSize="22sp" />
 
             <TextView
@@ -66,6 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Country"
+                android:background="@color/common_google_signin_btn_text_dark_disabled"
+                android:layout_marginBottom="10dp"
                 android:layout_below="@+id/my_profile_status"
                 android:layout_marginTop="30dp"
                 android:textAlignment="center"
@@ -78,6 +82,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Date of Birth"
+                android:background="@color/common_google_signin_btn_text_dark_disabled"
+                android:layout_marginBottom="10dp"
                 android:layout_below="@+id/my_country"
                 android:layout_marginTop="2dp"
                 android:textAlignment="center"
@@ -90,19 +96,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Gender"
+                android:background="@color/common_google_signin_btn_text_dark_disabled"
                 android:layout_below="@+id/my_dob"
-                android:layout_marginTop="2dp"
-                android:textAlignment="center"
-                android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/my_relationship_status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Relationship status"
-                android:layout_below="@+id/my_gender"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="2dp"
                 android:textAlignment="center"
                 android:textAllCaps="false"
@@ -113,20 +109,17 @@
                 android:id="@+id/my_post_button"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/my_relationship_status"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="122dp"
-                android:layout_marginTop="42dp"
-                android:layout_marginBottom="8dp"
-                android:background="@color/colorPrimaryDark"
+                android:layout_marginStart="172dp"
+                android:layout_marginTop="41dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/colorPrimary"
                 android:text="No. of Posts"
-                android:textColor="@android:color/background_light"
+                android:textColor="@android:color/primary_text_dark_nodisable"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
 
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
 </RelativeLayout>

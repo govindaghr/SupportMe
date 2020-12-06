@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/update_post_page_toolbar"
-        layout = "@layout/app_bar_layout" />
+        layout="@layout/app_bar_layout" />
 
     <EditText
         android:id="@+id/post_title"
@@ -40,7 +40,7 @@
     <ImageButton
         android:id="@+id/select_post_image"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="-4dp"

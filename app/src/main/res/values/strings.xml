@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SupportMe</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="relationship_status">Relationship status</string>
 </resources>
