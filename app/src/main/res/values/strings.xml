@@ -2,4 +2,13 @@
     <string name="app_name">SupportMe</string>
     <string name="enter_your_email">Enter your Email</string>
     <string name="relationship_status">Relationship status</string>
+    <string name="change_password">Change Password</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="logout">Logout</string>
+    <string name="help">Help</string>
+    <string name="confrim_passwrod">Confrim Passwrod</string>
+    <string name="register">Register</string>
+    <string name="enter_your_password">Enter your Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="password_reset_text">We will mail you a link after when you provide email and click the send button. Please click on that link to reset your password.</string>
 </resources>

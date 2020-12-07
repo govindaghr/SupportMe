@@ -15,14 +15,17 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText emailTextView, passwordTextView;
     private Button Btn;
     private ProgressBar progressbar;
     private TextView NeedNewAccountLink, ForgetPasswordLink;
+    private Boolean checkEmail;
 
     private FirebaseAuth mAuth;
 
@@ -67,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                //startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
+                startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
             }
         });
     }
@@ -105,29 +108,39 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task){
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(),"Login successful!!",Toast.LENGTH_LONG).show();
-
+                                    //check if email verified
+                                    VerifyEmailAddress();
                                     // hide the progress bar
                                     progressbar.setVisibility(View.GONE);
-
-                                    // if sign-in is successful
-                                    // intent to home activity
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(intent);
                                 }
 
                                 else {
-
                                     // sign-in failed
-                                    Toast.makeText(getApplicationContext(),
-                                            "Login failed!!",
-                                            Toast.LENGTH_LONG)
-                                            .show();
-
+                                    Toast.makeText(getApplicationContext(),"Login failed!!", Toast.LENGTH_LONG).show();
                                     // hide the progress bar
                                     progressbar.setVisibility(View.GONE);
                                 }
                             }
                 });
+    }
+    private void VerifyEmailAddress()
+    {
+        FirebaseUser user = mAuth.getCurrentUser();
+        checkEmail = user.isEmailVerified();
+
+        if(checkEmail)
+        {
+            // if sign-in is successful
+            // intent to home activity
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            //Snackbar.make(findViewById(android.R.id.content), "Login Successful", Snackbar.LENGTH_SHORT).show();
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(this, "Please verify your Account", Toast.LENGTH_SHORT).show();
+            mAuth.signOut();
+        }
     }
 }

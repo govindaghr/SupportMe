@@ -10,15 +10,14 @@
 
     <TextView
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:textStyle="italic"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="cursive"
+        android:text="Login"
         android:textColor="@color/colorPrimary"
         android:textSize="35dp"
-        android:text="Login"
-        />
+        android:textStyle="bold|italic" />
 
     <ImageView
         android:id="@+id/image_icon"
@@ -27,16 +26,16 @@
         android:layout_height="120dp"
         android:src="@drawable/supportme"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="15dp" />
+        android:layout_marginBottom="50dp" />
 
     <!-- Edit text for email -->
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter_your_email"
         android:layout_marginBottom="15dp"
-        />
+        android:hint="Enter your email"
+        android:inputType="textEmailAddress" />
 
     <!-- Edit text for password -->
     <EditText
@@ -51,29 +50,18 @@
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
-        android:background="@color/colorAccent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:background="@color/colorAccent"
         android:text="Login" />
-
-    <!--<TextView
-        android:id="@+id/register_account_link"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Don't have an Account, Need New Account?"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="18sp"
-        android:textStyle="bold" />-->
 
     <Button
         android:id="@+id/register_account_link"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_secondary"
         android:layout_marginBottom="10dp"
-        android:text="SignUp" />
-
+        android:background="@color/design_default_color_secondary"
+        android:text="Register" />
 
 
     <TextView

@@ -17,7 +17,7 @@
         android:layout_marginTop="34dp"
         android:layout_marginBottom="529dp"
         android:ems="10"
-        android:hint="Write Title of what you want to post"
+        android:hint="Title of what you want to post"
         android:inputType="textCapWords" />
 
     <Button
@@ -56,7 +56,7 @@
         android:layout_marginBottom="103dp"
         android:background="@color/cardview_shadow_end_color"
         android:ems="10"
-        android:hint="Type Title of your story."
+        android:hint="Summary of your story"
         android:inputType="textMultiLine" />
 
 </RelativeLayout>

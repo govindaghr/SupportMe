@@ -1,19 +1,16 @@
 package com.lhayuel.supportme;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,8 +18,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 public class RegistrationActivity extends AppCompatActivity {
-    private EditText emailTextView, passwordTextView;
+    private EditText emailTextView, passwordTextView, confirm_password;
     private Button Btn;
     private ProgressBar progressbar;
     private FirebaseAuth mAuth;
@@ -39,6 +38,7 @@ public class RegistrationActivity extends AppCompatActivity {
         // initialising all views through id defined above
         emailTextView = findViewById(R.id.email);
         passwordTextView = findViewById(R.id.passwd);
+        confirm_password = findViewById(R.id.confirm_password);
         Btn = findViewById(R.id.btnregister);
         progressbar = findViewById(R.id.progressbar);
 
@@ -63,24 +63,27 @@ public class RegistrationActivity extends AppCompatActivity {
         }*/
 
         // Take the value of two edit texts in Strings
-        String email, password;
+        String email, password, confirmp;
         email = emailTextView.getText().toString();
         password = passwordTextView.getText().toString();
+        confirmp = confirm_password.getText().toString();
 
         // Validations for input email and password
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(),
-                    "Please enter email!!",
-                    Toast.LENGTH_LONG)
-                    .show();
+            Toast.makeText(getApplicationContext(),"Please enter email!!", Toast.LENGTH_LONG).show();
             return;
         }
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(),
-                    "Please enter password!!",
-                    Toast.LENGTH_LONG)
-                    .show();
+        else if (TextUtils.isEmpty(password)) {
+            Toast.makeText(getApplicationContext(),"Please enter password!!", Toast.LENGTH_LONG).show();
             return;
+        }
+        else if(TextUtils.isEmpty(confirmp))
+        {
+            Toast.makeText(getApplicationContext(),"Please confirm your password",Toast.LENGTH_SHORT).show();
+        }
+        else if(!password.equals(confirmp))
+        {
+            Toast.makeText(getApplicationContext(), "your password do not match", Toast.LENGTH_SHORT).show();
         }
         // show the visibility of progress bar to show loading
         progressbar.setVisibility(View.VISIBLE);
@@ -93,18 +96,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(),
-                                    "Registration successful!",
-                                    Toast.LENGTH_LONG)
-                                    .show();
+                            Toast.makeText(getApplicationContext(),"Registration successful!", Toast.LENGTH_LONG).show();
                             SendEmailVerificationMessage();
 
                             // hide the progress bar
                             progressbar.setVisibility(View.GONE);
-
-                            // if the user created intent to login activity
-                            Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
-                            startActivity(intent);
                         }
                         else {
 
@@ -132,29 +128,26 @@ public class RegistrationActivity extends AppCompatActivity {
                                     {
                                         if(task.isSuccessful())
                                         {
-                                            Toast.makeText(RegistrationActivity.this, "Registration Successful, we've sent you a mail. Please check and verify your account... ", Toast.LENGTH_SHORT).show();
+                                            //Toast.makeText(RegistrationActivity.this, "Registration Successful, we've sent you a mail. Please check and verify your account... ", Toast.LENGTH_SHORT).show();
                                             //SendUserToLoginActivity();
+
+                                            //Redirect User to login activity
+                                            Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                            finish();
                                             mAuth.signOut();
                                         }
                                         else
                                         {
-                                            String error = task.getException().getMessage();
+                                            String error = Objects.requireNonNull(task.getException()).getMessage();
                                             Toast.makeText(RegistrationActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
                                             mAuth.signOut();
                                         }
                                     }
                                 });
                             }
-                        }
-
-                        /*private void SendUserToLoginActivity()
-                        {
-                            Intent LoginIntent = new Intent(RegistrationActivity.this, LoginActivity.class);
-                            LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(LoginIntent);
-                            finish();
-                        }*/
-
+                    }
                 });
     }
 }

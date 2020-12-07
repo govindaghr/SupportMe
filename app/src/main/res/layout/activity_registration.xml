@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,38 +10,45 @@
 
     <!-- TextView for heading -->
 
-    <!-- Edit text for email -->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:textColor="@color/colorAccent"
         android:textStyle="italic"
         android:layout_marginBottom="50dp"
         android:layout_gravity="center"
-
-        android:text="Register" />
+        android:text="@string/register" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="391dp"
         android:layout_height="62dp"
         android:layout_marginBottom="15dp"
-        android:background="@color/common_google_signin_btn_text_dark_disabled"
-        android:hint="Enter your Email" />
+        android:background="@color/textBackground"
+        android:hint="@string/enter_your_email"
+        android:inputType="textEmailAddress" />
 
     <!-- Edit text for password -->
     <EditText
         android:id="@+id/passwd"
         android:layout_width="382dp"
         android:layout_height="64dp"
-        android:background="@color/cardview_shadow_start_color"
+        android:background="@color/textBackground"
         android:layout_marginBottom="15dp"
-        android:hint="Enter your Password"
+        android:hint="@string/enter_your_password"
         android:inputType="textPassword" />
 
-    <!-- Button for register with text "Register" -->
+    <EditText
+        android:id="@+id/confirm_password"
+        android:layout_width="382dp"
+        android:layout_height="64dp"
+        android:background="@color/textBackground"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:hint="@string/confrim_passwrod"
+        android:inputType="textPassword"
+        android:padding="10dp" />
 
     <!-- ProgressBar for loading time -->
     <ProgressBar
@@ -57,11 +63,10 @@
         android:layout_width="147dp"
         android:layout_gravity="center"
         android:textStyle="italic"
-        android:textSize="20"
-        android:textColor="@color/cardview_light_background"
+        android:textSize="20sp"
+        android:textColor="@color/textBackground"
         android:background="@color/design_default_color_secondary_variant"
-
         android:layout_height="58dp"
-        android:text="Register" />
+        android:text="@string/register" />
 
 </LinearLayout>
