@@ -22,27 +22,28 @@
             app:tabGravity="fill"/>
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <androidx.viewpager.widget.ViewPager
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/viewPager" />
-
-
+        android:layout_height="553dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="1dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_story"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:clickable="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:tint="@android:color/white"
         android:backgroundTint="@color/colorPrimaryDark"
+        android:clickable="true"
+        android:focusable="true"
         android:onClick="addStory"
-        app:srcCompat="@drawable/add_story"
-        android:focusable="true" />
+        android:tint="@android:color/white"
+        app:srcCompat="@drawable/add_story" />
 
 
 </RelativeLayout>

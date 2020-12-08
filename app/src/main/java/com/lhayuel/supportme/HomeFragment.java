@@ -128,7 +128,7 @@ public class HomeFragment extends Fragment {
         public PostsViewHolder(@NonNull View itemView)
         {
             super(itemView);
-            //mView = itemView;
+            mView = itemView;
 
             currentUserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
             username=itemView.findViewById(R.id.userid);
