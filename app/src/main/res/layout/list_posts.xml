@@ -42,13 +42,14 @@
             android:textColor="@color/colorPrimary"
             android:textStyle="bold"
             android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
         <TextView
             android:id="@+id/userid"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="307dp"
+            android:layout_height="36dp"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
             android:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
     </LinearLayout>
