@@ -2,6 +2,7 @@ package com.lhayuel.supportme;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference UsersRef;
 
+    TabLayout tabLayout;
+    ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,16 @@ public class MainActivity extends AppCompatActivity {
 
         //Firebase Logout
         //FirebaseAuth.getInstance().signOut();
+
+        tabLayout = findViewById(R.id.tabLayout);
+        viewPager = findViewById(R.id.viewPager);
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new HomeFragment(),"Sources");
+        adapter.addFragment(new HomeFragment(),"Parameters");
+        adapter.addFragment(new HomeFragment(),"Why Monitor?");
+        viewPager.setAdapter(adapter); //loads fragment on viewpager
+        tabLayout.setupWithViewPager(viewPager); //loads tabs on view
+        viewPager.setCurrentItem(1); //Loads ParameterFragment as default
 
     }
 
