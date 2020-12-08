@@ -8,12 +8,10 @@
         app:showAsAction="ifRoom" />
     <item android:id="@+id/change_password"
         android:icon="@drawable/password"
-        android:title="@string/change_password"
-        app:showAsAction="ifRoom" />
+        android:title="@string/change_password" />
     <item android:id="@+id/logout"
         android:icon="@drawable/logout"
-        android:title="@string/logout"
-        app:showAsAction="ifRoom" />
+        android:title="@string/logout" />
     <item android:id="@+id/help"
         android:icon="@drawable/ic_baseline_help_24"
         android:title="@string/help"

@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new HomeFragment(),"Sources");
-        adapter.addFragment(new HomeFragment(),"Parameters");
-        adapter.addFragment(new HomeFragment(),"Why Monitor?");
+        adapter.addFragment(new HomeFragment(),"My Story");
+        adapter.addFragment(new HomeFragment(),"Stories");
+        adapter.addFragment(new HomeFragment(),"About Us");
         viewPager.setAdapter(adapter); //loads fragment on viewpager
         tabLayout.setupWithViewPager(viewPager); //loads tabs on view
         viewPager.setCurrentItem(1); //Loads ParameterFragment as default
