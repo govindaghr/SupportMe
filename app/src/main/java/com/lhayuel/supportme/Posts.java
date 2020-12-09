@@ -1,23 +1,26 @@
 package com.lhayuel.supportme;
 
 public class Posts {
-    public String uid, time, date, title, postimage, description, profileimage, fullname;
+    public String uid, time, date, title, postimage, description, username;
 
     public Posts()
     {
 
     }
 
-    public Posts(String uid, String time, String date, String title, String postimage, String description, String fullname)
+    public Posts(String uid, String time, String date, String title, String postimage, String description, String username)
     {
+        //this.username = username;
         this.uid = uid;
         this.title = title;
         this.time = time;
         this.date = date;
         this.postimage = postimage;
         this.description = description;
-        this.fullname = fullname;
+        this.username = username;
     }
+
+    //public String getusername{ return username; }
 
     public String getTitle(){ return title; }
 
@@ -65,19 +68,11 @@ public class Posts {
         this.description = description;
     }
 
-    public String getProfileimage() {
-        return profileimage;
+    public String getUsername() {
+        return username;
     }
 
-    public void setProfileimage(String profileimage) {
-        this.profileimage = profileimage;
-    }
-
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

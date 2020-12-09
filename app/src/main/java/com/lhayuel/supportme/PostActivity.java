@@ -231,7 +231,7 @@ public class PostActivity extends AppCompatActivity {
             {
                 if(dataSnapshot.exists())
                 {
-                    final String userFullName = dataSnapshot.child("fullname").getValue().toString();
+                    final String userName = Objects.requireNonNull(dataSnapshot.child("username").getValue()).toString();
                     //final String userProfileImage = dataSnapshot.child("profileimage").getValue().toString();
 
                     HashMap<String, Object> postsMap = new HashMap<>();
@@ -241,8 +241,7 @@ public class PostActivity extends AppCompatActivity {
                     postsMap.put("title", Title);
                     postsMap.put("description", Description);
                     postsMap.put("postimage", downloadUrl);
-                    postsMap.put("profileimage", "userProfileImage");
-                    postsMap.put("fullname", userFullName);
+                    postsMap.put("username", userName);
                     postsMap.put("counter", countPosts);
                     PostsRef.child(current_user_id + postRandomName).updateChildren(postsMap)
                             .addOnCompleteListener(new OnCompleteListener()

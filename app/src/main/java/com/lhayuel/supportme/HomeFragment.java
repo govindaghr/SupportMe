@@ -49,17 +49,11 @@ public class HomeFragment extends Fragment {
         PostsRef = FirebaseDatabase.getInstance().getReference().child("Posts");
 
         postList = view.findViewById(R.id.recyclerView);
-        postList.setHasFixedSize(true);
+        postList.setHasFixedSize(false);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
-
         postList.setLayoutManager(linearLayoutManager);
-        //GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext());
-        //postList.setLayoutManager(new GridLayoutManager(view.getContext()));
-//        postList.setLayoutManager(new LinearLayoutManager(view.getContext()));
-//        gridLayoutManager.setReverseLayout(true);
-//        gridLayoutManager.setStackFromEnd(true);
         DisplayAllUsersPosts();
         return view;
     }
@@ -90,7 +84,7 @@ public class HomeFragment extends Fragment {
                     @Override
                     protected void onBindViewHolder(@NonNull PostsViewHolder holder, int position, @NonNull Posts model)
                     {
-                        holder.username.setText(model.getFullname());
+                        holder.username.setText(model.getUsername());
                         holder.time.setText("Time: " +model.getTime());
                         holder.date.setText("Date: " +model.getDate());
                         //holder.description.setText(model.getDescription());
