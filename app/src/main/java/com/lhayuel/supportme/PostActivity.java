@@ -52,7 +52,7 @@ public class PostActivity extends AppCompatActivity {
 
     private StorageReference PostsImagesReference;
 
-    private String saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, current_user_id;
+    private String saveCurrentDate, saveCurrentTime, postRandomName, imageUrl, current_user_id;
     private long countPosts = 0;
 
     @Override
@@ -188,7 +188,7 @@ public class PostActivity extends AppCompatActivity {
                     Uri downUri = task.getResult();
                     Toast.makeText(PostActivity.this, "Image uploaded successfully to Storage... ", Toast.LENGTH_SHORT).show();
 
-                    downloadUrl = downUri.toString();
+                    imageUrl = downUri.toString();
                     SavingPostInformationToDatabase();
                 }
                 else
@@ -240,7 +240,7 @@ public class PostActivity extends AppCompatActivity {
                     postsMap.put("time", saveCurrentTime);
                     postsMap.put("title", Title);
                     postsMap.put("description", Description);
-                    postsMap.put("postimage", downloadUrl);
+                    postsMap.put("postimage", imageUrl);
                     postsMap.put("username", userName);
                     postsMap.put("counter", countPosts);
                     PostsRef.child(current_user_id + postRandomName).updateChildren(postsMap)
@@ -275,7 +275,9 @@ public class PostActivity extends AppCompatActivity {
     private void SendUserToMainActivity()
     {
         Intent mainIntent = new Intent(PostActivity.this, MainActivity.class);
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
+        finish();
     }
 
    /* private void SendUserToProfileActivity()

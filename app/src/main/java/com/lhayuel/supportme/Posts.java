@@ -10,7 +10,6 @@ public class Posts {
 
     public Posts(String uid, String time, String date, String title, String postimage, String description, String username)
     {
-        //this.username = username;
         this.uid = uid;
         this.title = title;
         this.time = time;
@@ -20,59 +19,45 @@ public class Posts {
         this.username = username;
     }
 
-    //public String getusername{ return username; }
-
     public String getTitle(){ return title; }
-
-    public void setTitle(String description) {
-        this.title = title;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
     public String getTime() {
         return time;
     }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
     public String getDate() {
         return date;
     }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getPostimage() {
         return postimage;
     }
-
-    public void setPostimage(String postimage) {
-        this.postimage = postimage;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getUsername() {
         return username;
     }
 
+    /*public void setTitle(String title) {
+        this.title = title;
+    }
+    public String getUid() {
+        return uid;
+    }
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+    public void setTime(String time) {
+        this.time = time;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public void setPostimage(String postimage) {
+        this.postimage = postimage;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
     public void setUsername(String username) {
         this.username = username;
-    }
+    }*/
 }

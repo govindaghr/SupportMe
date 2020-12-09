@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //FirebaseDatabase.getInstance().setPersistenceEnabled(true);//offline..
+        //Firebase.getDefaultConfig().setPersistenceEnabled(true);
         mAuth = FirebaseAuth.getInstance();
         //currentUserID = mAuth.getCurrentUser().getUid();
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -45,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new HomeFragment(),"My Story");
+        adapter.addFragment(new MyStoryFragment(),"My Story");
         adapter.addFragment(new HomeFragment(),"Stories");
-        adapter.addFragment(new HomeFragment(),"About Us");
+        adapter.addFragment(new AboutUsFragment(),"About Us");
         viewPager.setAdapter(adapter); //loads fragment on viewpager
         tabLayout.setupWithViewPager(viewPager); //loads tabs on view
         viewPager.setCurrentItem(1); //Loads ParameterFragment as default
@@ -75,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void addStory(View view) {
         Intent postIntent = new Intent(MainActivity.this, PostActivity.class);
+        postIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(postIntent);
+        finish();
     }
 
     private void CheckUserExistence()
