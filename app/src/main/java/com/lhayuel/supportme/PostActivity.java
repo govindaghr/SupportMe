@@ -275,9 +275,7 @@ public class PostActivity extends AppCompatActivity {
     private void SendUserToMainActivity()
     {
         Intent mainIntent = new Intent(PostActivity.this, MainActivity.class);
-        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
-        finish();
     }
 
    /* private void SendUserToProfileActivity()

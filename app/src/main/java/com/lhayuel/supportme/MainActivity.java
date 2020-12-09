@@ -64,9 +64,7 @@ public class MainActivity extends AppCompatActivity {
         if(currentUser == null)
         {
             Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-            loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(loginIntent);
-            finish();
         }
         else
         {
@@ -76,9 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addStory(View view) {
         Intent postIntent = new Intent(MainActivity.this, PostActivity.class);
-        postIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(postIntent);
-        finish();
     }
 
     private void CheckUserExistence()
@@ -108,9 +104,7 @@ public class MainActivity extends AppCompatActivity {
     private void SendUserToSetupActivity()
     {
         Intent SetupIntent = new Intent(MainActivity.this, ProfileSetupActivity.class);
-        SetupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(SetupIntent);
-        finish();
     }
 
 
@@ -125,9 +119,7 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.logout) {
             FirebaseAuth.getInstance().signOut();
             Intent logoutIntent = new Intent(MainActivity.this, LoginActivity.class);
-            logoutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(logoutIntent);
-            finish();
         }
         return true;
     }
