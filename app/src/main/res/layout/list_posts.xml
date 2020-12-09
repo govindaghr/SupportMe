@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_launcher_background"
-            android:contentDescription="TODO" />
+            android:contentDescription="@string/story_image" />
 
         <TextView
             android:id="@+id/title"

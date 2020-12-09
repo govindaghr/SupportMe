@@ -13,4 +13,5 @@
     <string name="password_reset_text">We will mail you a link after when you provide email and click the send button. Please click on that link to reset your password.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="story_image">Story Image</string>
 </resources>
