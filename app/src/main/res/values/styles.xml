@@ -7,4 +7,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="PostsDetailText" parent="TextAppearance.AppCompat.Subhead"/>
+
+    <style name="PostsTitle" parent="TextAppearance.AppCompat.Headline"/>
+
+    <style name="PostsDetailTitle" parent="TextAppearance.AppCompat.Headline"/>
+
 </resources>

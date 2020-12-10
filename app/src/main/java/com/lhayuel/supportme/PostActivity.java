@@ -1,6 +1,7 @@
 package com.lhayuel.supportme;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -35,9 +36,7 @@ import java.util.Objects;
 
 public class PostActivity extends AppCompatActivity {
 
-    private Toolbar mToolbar;
     private ProgressDialog loadingBar;
-
     private ImageButton SelectPostImage;
     private Button UpdatePostButton;
     private EditText PostDescription;
@@ -73,11 +72,10 @@ public class PostActivity extends AppCompatActivity {
         PostDescription = (EditText) findViewById(R.id.post_description);
         loadingBar = new ProgressDialog(this);
 
-        //mToolbar = (Toolbar) findViewById(R.id.update_post_page_toolbar);
-        //setSupportActionBar(mToolbar);
+
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("Update Post");
+        getSupportActionBar().setTitle("Add Post");
 
         SelectPostImage.setOnClickListener(new View.OnClickListener()
         {
@@ -105,7 +103,6 @@ public class PostActivity extends AppCompatActivity {
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, Gallery_Pick);
-        //startActivityForResult(Intent.createChooser(galleryIntent, "Select Picture"), PICK_IMAGE);
 
     }
 
@@ -277,10 +274,4 @@ public class PostActivity extends AppCompatActivity {
         Intent mainIntent = new Intent(PostActivity.this, MainActivity.class);
         startActivity(mainIntent);
     }
-
-   /* private void SendUserToProfileActivity()
-    {
-//        Intent loginIntent = new Intent(PostActivity.this, ProfileActivity.class);
-//        startActivity(loginIntent);
-    }*/
 }

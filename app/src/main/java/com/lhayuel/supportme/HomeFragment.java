@@ -3,6 +3,7 @@ package com.lhayuel.supportme;
 import androidx.lifecycle.ViewModelProviders;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -82,28 +83,26 @@ public class HomeFragment extends Fragment {
                     }
 
                     @Override
-                    protected void onBindViewHolder(@NonNull PostsViewHolder holder, int position, @NonNull Posts model)
+                    protected void onBindViewHolder(@NonNull final PostsViewHolder holder, int position, @NonNull Posts model)
                     {
-                        holder.username.setText(model.getUsername());
-                        holder.time.setText("Time: " +model.getTime());
-                        holder.date.setText("Date: " +model.getDate());
+                        final String PostKey = getRef(position).getKey();
+                        holder.username.setText("@"+model.getUsername());
+                        holder.time.setText("  " +model.getTime());
+                        holder.date.setText("  " +model.getDate());
                         //holder.description.setText(model.getDescription());
                         holder.title.setText(model.getTitle());
                         Picasso.get().load(model.getPostimage()).into(holder.postImage);
 
-                       /* holder.mView.setOnClickListener(new View.OnClickListener()
+                       holder.mView.setOnClickListener(new View.OnClickListener()
                         {
                             @Override
-                            public void onClick (View v)
+                            public void onClick (View view)
                             {
-                                *//*Intent clickPostIntent = new Intent(MainActivity.this, ClickPostActivity.class);
-                                clickPostIntent.putExtra("PostKey", PostKey);
-                                startActivity(clickPostIntent);*//*
+                                Intent readStoryIntent = new Intent(view.getContext(), ReadStoryActivity.class);
+                                readStoryIntent.putExtra("PostKey", PostKey);
+                                startActivity(readStoryIntent);
                             }
-                        });*/
-
-
-
+                        });
                     }
                 };
 

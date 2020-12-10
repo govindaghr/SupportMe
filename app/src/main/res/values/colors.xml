@@ -8,4 +8,7 @@
     <color name="colorAccent">#448AFF</color>
     <color name="textBackground">#F5F5F5</color>
     <color name="greyBackground">#BDBDBD</color>
+    <color name="commentBackground">#F5F5F5</color>
+    <color name="commentHeaderBackground">#B3E5FC</color>
+    <color name="colorLightBlueBackground">#B2EBF2</color>
 </resources>
