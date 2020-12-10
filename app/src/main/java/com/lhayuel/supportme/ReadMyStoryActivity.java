@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,17 +25,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
 import java.util.Objects;
 
-public class ReadStoryActivity extends AppCompatActivity {
+public class ReadMyStoryActivity extends AppCompatActivity {
     private ActionBar mActionbar;
     private ImageView postImage;
     private TextView title, postTime, postDate, userid, post_description;
-
     private RecyclerView CommentsList;
-    private Button post_comment;
-    private EditText etComment;
 
     private DatabaseReference ClickPostRef, UsersRef, PostsRef;
     private FirebaseAuth mAuth;
@@ -51,7 +41,7 @@ public class ReadStoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_read_story);
+        setContentView(R.layout.activity_read_my_story);
 
         mAuth = FirebaseAuth.getInstance();
         currentUserID = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
@@ -64,7 +54,8 @@ public class ReadStoryActivity extends AppCompatActivity {
         mActionbar = getSupportActionBar();
         assert mActionbar != null;
         mActionbar.setDisplayShowHomeEnabled(true);
-        //mActionbar.setTitle("Add Post");
+        /*FragmentManager fm = getActivity().getSupportFragmentManager();
+        fm.popBackStack();*/
 
         postImage = findViewById(R.id.postImage);
         title = findViewById(R.id.title);
@@ -77,10 +68,9 @@ public class ReadStoryActivity extends AppCompatActivity {
         CommentsList = (RecyclerView) findViewById(R.id.comments_list);
         CommentsList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        //linearLayoutManager.setReverseLayout(true); //shows last comment on top
-        //linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager.setReverseLayout(true); //shows last comment on top
+        linearLayoutManager.setStackFromEnd(true);
         CommentsList.setLayoutManager(linearLayoutManager);
-        etComment = (EditText) findViewById(R.id.comment_input);
 
 
         ClickPostRef.addValueEventListener(new ValueEventListener()
@@ -97,7 +87,7 @@ public class ReadStoryActivity extends AppCompatActivity {
                     databaseUserID = Objects.requireNonNull(dataSnapshot.child("username").getValue()).toString();
 
                     title.setText(postTitle);
-                    userid.setText("@" +databaseUserID);
+                    userid.setText(getString(R.string.at_the_rate) + databaseUserID);
                     post_description.setText(description);
                     Picasso.get().load(image).into(postImage);
 
@@ -126,34 +116,9 @@ public class ReadStoryActivity extends AppCompatActivity {
         });
     }
 
-    public void postComment(View view) {
-        UsersRef.child(currentUserID).addValueEventListener(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-            {
-                if(dataSnapshot.exists())
-                {
-                    String userName = Objects.requireNonNull(dataSnapshot.child("username").getValue()).toString();
-
-                    ValidateComment(userName);
-
-                    etComment.setText("");
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {
-
-            }
-        });
-    }
-
-
     @Override
-    protected void onStart()
-    {
+    protected void onStart() {
+        super.onStart();
         super.onStart();
         FirebaseRecyclerOptions<Comments> options=new FirebaseRecyclerOptions.Builder<Comments>().setQuery(PostsRef,Comments.class).build();
         FirebaseRecyclerAdapter<Comments, CommentsViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Comments, CommentsViewHolder>(options)
@@ -179,52 +144,5 @@ public class ReadStoryActivity extends AppCompatActivity {
 
         CommentsList.setAdapter(firebaseRecyclerAdapter);
         firebaseRecyclerAdapter.startListening();
-    }
-
-
-    private void ValidateComment(String userName)
-    {
-        String commentText = etComment.getText().toString();
-
-        if(TextUtils.isEmpty(commentText))
-        {
-            Toast.makeText(this, "Please write something to add comment", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
-            Calendar calFordDate = Calendar.getInstance();
-            SimpleDateFormat currentDate = new SimpleDateFormat("dd-MMMM-yyyy");
-            final String saveCurrentDate = currentDate.format(calFordDate.getTime());
-
-            //Calendar calFordTime = Calendar.getInstance();
-            SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
-            final String saveCurrentTime = currentTime.format(calFordDate.getTime());
-
-            final String RandomKey = currentUserID + saveCurrentDate + saveCurrentTime;
-
-            HashMap<String, Object> commentsMap = new HashMap<>();
-            commentsMap.put("uid", currentUserID);
-            commentsMap.put("comment", commentText);
-            commentsMap.put("date", saveCurrentDate);
-            commentsMap.put("time", saveCurrentTime);
-            commentsMap.put("username", userName);
-
-            PostsRef.child(RandomKey).updateChildren(commentsMap)
-                    .addOnCompleteListener(new OnCompleteListener()
-                    {
-                        @Override
-                        public void onComplete(@NonNull Task task)
-                        {
-                            if(task.isSuccessful())
-                            {
-                                Toast.makeText(ReadStoryActivity.this, "Commented Added successfully", Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                            {
-                                Toast.makeText(ReadStoryActivity.this, "Error Occured, try again", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-        }
     }
 }

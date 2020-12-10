@@ -2,6 +2,7 @@ package com.lhayuel.supportme;
 
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -89,51 +90,28 @@ public class MyStoryFragment extends Fragment {
             protected void onBindViewHolder(@NonNull MyPostsViewHolder holder, int position, @NonNull Posts model) {
                 final String PostKey = getRef(position).getKey();
 
-                holder.setUsername(model.getUsername());
+                holder.setUsername("@"+model.getUsername());
                 holder.setTime(model.getTime());
                 holder.setDate(model.getDate());
                 holder.setPostImage(model.getPostimage());
                 holder.setTitle(model.getTitle());
 
 
-                 /* holder.mView.setOnClickListener(new View.OnClickListener()
+                 holder.mView.setOnClickListener(new View.OnClickListener()
                         {
                             @Override
-                            public void onClick (View v)
+                            public void onClick (View view)
                             {
-                                *//*Intent clickPostIntent = new Intent(MainActivity.this, ClickPostActivity.class);
-                                clickPostIntent.putExtra("PostKey", PostKey);
-                                startActivity(clickPostIntent);*//*
+                                Intent viewStory = new Intent(view.getContext(), ReadMyStoryActivity.class);
+                                viewStory.putExtra("PostKey", PostKey);
+                                startActivity(viewStory);
                             }
-                        });*/
+                        });
             }
         };
 
         postList.setAdapter(firebaseRecyclerAdapter);
         firebaseRecyclerAdapter.startListening();
     }
-
-    /*public static class PostsViewHolder extends RecyclerView.ViewHolder
-    {
-        TextView username, date, time, title, description;
-        ImageView postImage;
-        View mView;
-
-        String currentUserId;
-
-        public PostsViewHolder(@NonNull View itemView)
-        {
-            super(itemView);
-            mView = itemView;
-
-            currentUserId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-            username=itemView.findViewById(R.id.userid);
-            date=itemView.findViewById(R.id.postDate);
-            time=itemView.findViewById(R.id.postTime);
-            //description=itemView.findViewById(R.id.post_description);
-            title=itemView.findViewById(R.id.title);
-            postImage=itemView.findViewById(R.id.postImage);
-        }
-    }*/
 
 }
