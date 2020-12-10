@@ -100,20 +100,6 @@ public class ReadStoryActivity extends AppCompatActivity {
                     userid.setText("@" +databaseUserID);
                     post_description.setText(description);
                     Picasso.get().load(image).into(postImage);
-
-                    /*if(currentUserID.equals(databaseUserID))
-                    {
-                        DeletePostButton.setVisibility(View.VISIBLE);
-                        EditPostButton.setVisibility(View.VISIBLE);
-                    }
-                    EditPostButton.setOnClickListener(new View.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(View v)
-                        {
-                            EditCurrentPost(description);
-                        }
-                    });*/
                 }
 
             }
@@ -124,6 +110,32 @@ public class ReadStoryActivity extends AppCompatActivity {
 
             }
         });
+
+
+        FirebaseRecyclerOptions<Comments> options=new FirebaseRecyclerOptions.Builder<Comments>().setQuery(PostsRef,Comments.class).build();
+        FirebaseRecyclerAdapter<Comments, CommentsViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Comments, CommentsViewHolder>(options)
+        {
+            @Override
+            protected void onBindViewHolder(@NonNull CommentsViewHolder holder, int position, @NonNull Comments model)
+            {
+                holder.myUserName.setText("@" + model.getUsername() + "   ");
+                holder.myComment.setText(model.getComment());
+                holder.myDate.setText(model.getDate());
+                holder.myTime.setText("  " + model.getTime());
+            }
+
+            @NonNull
+            @Override
+            public CommentsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
+            {
+                View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_comments,viewGroup,false);
+
+                return new CommentsViewHolder(view);
+            }
+        };
+
+        CommentsList.setAdapter(firebaseRecyclerAdapter);
+        firebaseRecyclerAdapter.startListening();
     }
 
     public void postComment(View view) {
@@ -155,30 +167,6 @@ public class ReadStoryActivity extends AppCompatActivity {
     protected void onStart()
     {
         super.onStart();
-        FirebaseRecyclerOptions<Comments> options=new FirebaseRecyclerOptions.Builder<Comments>().setQuery(PostsRef,Comments.class).build();
-        FirebaseRecyclerAdapter<Comments, CommentsViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Comments, CommentsViewHolder>(options)
-        {
-            @Override
-            protected void onBindViewHolder(@NonNull CommentsViewHolder holder, int position, @NonNull Comments model)
-            {
-                holder.myUserName.setText("@" + model.getUsername() + "   ");
-                holder.myComment.setText(model.getComment());
-                holder.myDate.setText(model.getDate());
-                holder.myTime.setText("  " + model.getTime());
-            }
-
-            @NonNull
-            @Override
-            public CommentsViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
-            {
-                View view= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_comments,viewGroup,false);
-
-                return new CommentsViewHolder(view);
-            }
-        };
-
-        CommentsList.setAdapter(firebaseRecyclerAdapter);
-        firebaseRecyclerAdapter.startListening();
     }
 
 

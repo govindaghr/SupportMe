@@ -84,18 +84,12 @@ public class LoginActivity extends AppCompatActivity {
 
         // validations for input email and password
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(),
-                    "Please enter email!!",
-                    Toast.LENGTH_LONG)
-                    .show();
+            Toast.makeText(getApplicationContext(),"Please enter email!!", Toast.LENGTH_LONG).show();
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(),
-                    "Please enter password!!",
-                    Toast.LENGTH_LONG)
-                    .show();
+            Toast.makeText(getApplicationContext(),"Please enter password!!", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -126,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
     private void VerifyEmailAddress()
     {
         FirebaseUser user = mAuth.getCurrentUser();
+        assert user != null;
         checkEmail = user.isEmailVerified();
 
         if(checkEmail)
@@ -133,9 +128,11 @@ public class LoginActivity extends AppCompatActivity {
             // if sign-in is successful
             // intent to home activity
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-            //Snackbar.make(findViewById(android.R.id.content), "Login Successful", Snackbar.LENGTH_SHORT).show();
             Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+            finish();
+
         }
         else
         {

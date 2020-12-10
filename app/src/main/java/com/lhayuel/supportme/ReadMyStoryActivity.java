@@ -114,12 +114,16 @@ public class ReadMyStoryActivity extends AppCompatActivity {
 
             }
         });
+
+        initData();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        super.onStart();
+    }
+
+    protected void initData(){
         FirebaseRecyclerOptions<Comments> options=new FirebaseRecyclerOptions.Builder<Comments>().setQuery(PostsRef,Comments.class).build();
         FirebaseRecyclerAdapter<Comments, CommentsViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Comments, CommentsViewHolder>(options)
         {
