@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/postImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="260dp"
             app:srcCompat="@drawable/ic_launcher_background"
             android:contentDescription="@string/story_image" />
 
