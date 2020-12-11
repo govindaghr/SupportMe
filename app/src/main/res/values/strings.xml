@@ -28,4 +28,8 @@
     <string name="at_the_rate">\@</string>
     <string name="leave_your_comment_here">Leave your comment here</string>
     <string name="profile_setup">Profile Setup</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="enter_your_password">Enter your Password</string>
+    <string name="login">Login</string>
 </resources>

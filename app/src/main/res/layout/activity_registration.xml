@@ -15,14 +15,14 @@
         android:layout_height="wrap_content"
         android:textSize="35sp"
         android:textColor="@color/colorAccent"
-        android:textStyle="italic"
+        android:textStyle="bold"
         android:layout_marginBottom="50dp"
         android:layout_gravity="center"
-        android:text="@string/register" />
+        android:text="@string/sign_up" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="391dp"
+        android:layout_width="match_parent"
         android:layout_height="62dp"
         android:layout_marginBottom="15dp"
         android:background="@color/textBackground"
@@ -32,8 +32,8 @@
     <!-- Edit text for password -->
     <EditText
         android:id="@+id/passwd"
-        android:layout_width="382dp"
-        android:layout_height="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
         android:background="@color/textBackground"
         android:layout_marginBottom="15dp"
         android:hint="@string/enter_your_password"
@@ -41,8 +41,8 @@
 
     <EditText
         android:id="@+id/confirm_password"
-        android:layout_width="382dp"
-        android:layout_height="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
         android:background="@color/textBackground"
         android:layout_marginBottom="15dp"
         android:ems="10"
@@ -60,13 +60,12 @@
 
     <Button
         android:id="@+id/btnregister"
-        android:layout_width="147dp"
+        android:layout_width="match_parent"
         android:layout_gravity="center"
-        android:textStyle="italic"
         android:textSize="20sp"
         android:textColor="@color/textBackground"
         android:background="@color/design_default_color_secondary_variant"
         android:layout_height="58dp"
-        android:text="@string/register" />
+        android:text="@string/sign_up" />
 
 </LinearLayout>
