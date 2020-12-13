@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/edit_profile"
+   <!-- <item android:id="@+id/edit_profile"
         android:icon="@drawable/edit_profile"
         android:title="@string/edit_profile"
         app:showAsAction="ifRoom" />
     <item android:id="@+id/change_password"
         android:icon="@drawable/password"
-        android:title="@string/change_password" />
+        android:title="@string/change_password" />-->
     <item android:id="@+id/logout"
         android:icon="@drawable/logout"
         android:title="@string/logout" />
-    <item android:id="@+id/help"
+    <!--<item android:id="@+id/help"
         android:icon="@drawable/ic_baseline_help_24"
         android:title="@string/help"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom" />-->
 
 </menu>
