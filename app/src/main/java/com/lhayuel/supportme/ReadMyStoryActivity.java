@@ -2,18 +2,25 @@ package com.lhayuel.supportme;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -51,11 +58,11 @@ public class ReadMyStoryActivity extends AppCompatActivity {
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
         PostsRef = FirebaseDatabase.getInstance().getReference().child("Posts").child(PostKey).child("Comments");
 
-        mActionbar = getSupportActionBar();
-        assert mActionbar != null;
-        mActionbar.setDisplayShowHomeEnabled(true);
-        /*FragmentManager fm = getActivity().getSupportFragmentManager();
-        fm.popBackStack();*/
+        /*mActionbar = getSupportActionBar();
+        if(mActionbar != null){
+            mActionbar.setDisplayHomeAsUpEnabled(true);
+            mActionbar.setDisplayHomeAsUpEnabled(true);
+        }*/
 
         postImage = findViewById(R.id.postImage);
         title = findViewById(R.id.title);
@@ -148,5 +155,88 @@ public class ReadMyStoryActivity extends AppCompatActivity {
 
         CommentsList.setAdapter(firebaseRecyclerAdapter);
         firebaseRecyclerAdapter.startListening();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.story_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() ==android.R.id.home){
+            onBackPressed();
+        }
+        if (item.getItemId() == R.id.edit_story) {/*Intent editIntent = new Intent(ReadMyStoryActivity.this, EditStoryActivity.class);
+                editIntent.putExtra("PostKey", PostKey);
+                startActivity(editIntent);*/
+            editCurrentPost(description);
+        }
+       if (item.getItemId() == R.id.delete_story){
+           final AlertDialog.Builder confirmDelete = new AlertDialog.Builder(ReadMyStoryActivity.this);
+           confirmDelete.setTitle("Do you want to delete?");
+           confirmDelete.setMessage("Your story will be deleted permanently and you'll not be able to retrieve it later");
+           confirmDelete.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+               @Override
+               public void onClick(DialogInterface dialog, int which) {
+                   deletePost();
+               }
+           });
+
+           confirmDelete.setNegativeButton("No", new DialogInterface.OnClickListener() {
+               @Override
+               public void onClick(DialogInterface dialog, int which) {
+                   dialog.dismiss();
+               }
+           });
+           confirmDelete.setCancelable(false);
+           confirmDelete.show();
+       }
+        return true;
+    }
+
+    private void deletePost(){
+        ClickPostRef.removeValue();
+        Intent intent = new Intent(ReadMyStoryActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+        Toast.makeText(this, "Post has been deleted.", Toast.LENGTH_SHORT).show();
+    }
+
+
+    private void editCurrentPost (String description)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ReadMyStoryActivity.this);
+        builder.setTitle("Edit Post: ");
+
+        final EditText inputField = new EditText(ReadMyStoryActivity.this);
+        inputField.setText(description);
+        builder.setView(inputField);
+
+        builder.setPositiveButton("Update", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                ClickPostRef.child("description").setValue(inputField.getText().toString());
+                Toast.makeText(ReadMyStoryActivity.this, "Post Updated successfully", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                dialog.cancel();
+            }
+        });
+
+        Dialog dialog = builder.create();
+        dialog.setCancelable(false);
+        dialog.show();
+        //Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(R.color.colorLightBlueBackground);
     }
 }

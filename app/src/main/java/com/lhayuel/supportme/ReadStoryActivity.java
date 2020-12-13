@@ -65,6 +65,7 @@ public class ReadStoryActivity extends AppCompatActivity {
         assert mActionbar != null;
         mActionbar.setDisplayShowHomeEnabled(true);
         //mActionbar.setTitle("Add Post");
+        mActionbar.setDisplayHomeAsUpEnabled(true);
 
         postImage = findViewById(R.id.postImage);
         title = findViewById(R.id.title);

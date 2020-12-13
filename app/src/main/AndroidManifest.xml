@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".EditStoryActivity"></activity>
         <activity android:name=".ReadMyStoryActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

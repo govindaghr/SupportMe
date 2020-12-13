@@ -31,4 +31,6 @@
     <string name="sign_up">Sign Up</string>
     <string name="forget_password">Forget Password?</string>
     <string name="login">Login</string>
+    <string name="edit_story">Edit Story</string>
+    <string name="delete_story">Delete Story</string>
 </resources>

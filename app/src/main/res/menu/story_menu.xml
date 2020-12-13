@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item android:id="@+id/edit_story"
         android:icon="@drawable/edit_profile"
-        android:title="@string/edit_profile"
-        app:showAsAction="ifRoom" />
+        app:iconTint="@color/textBackground"
+        app:showAsAction="ifRoom"
+        android:title="@string/edit_story" />
     <item android:id="@+id/delete_story"
-        android:icon="@drawable/remove"
-        android:title="@string/change_password"
+        android:icon="@drawable/delete"
+        app:iconTint="@color/design_default_color_error"
+        android:title="@string/delete_story"
         app:showAsAction="ifRoom" />
 </menu>
