@@ -33,4 +33,18 @@
     <string name="login">Login</string>
     <string name="edit_story">Edit Story</string>
     <string name="delete_story">Delete Story</string>
+
+    <string name="About_us">Developer:</string>
+    <string name="developers">Karma Tenzin 17508502\nChimi Tshering 17350748\nDawa Gyeltshen 17480595\nPema Wangchuk 17253255\nGovinda Ghimeray 77960168 \nBerandra Rai 17325645</string>
+    <string name="guided_by">Guided by:</string>
+    <string name="guide_name">Mr.Yeshi Wangchuk (Module Coordinator)</string>
+    <string name="about_app">About app:</string>
+    <string name="app_ifo">This ia a mobile app (SupportMe) intended to create a platform
+    to write the stories and to provide information  which will guide and give an
+    ides to youth and other user.
+</string>
+    <string name="add_post">Add Post</string>
+    <string name="summary_of_your_story">Summary of your story</string>
+    <string name="title_of_what_you_want_to_post">Title of what you want to post</string>
+
 </resources>

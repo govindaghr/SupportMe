@@ -17,7 +17,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="522dp"
-        android:hint="Title of what you want to post"
+        android:hint="@string/title_of_what_you_want_to_post"
         android:inputType="textCapWords"
         android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="103dp"
-        android:hint="Summary of your story"
+        android:hint="@string/summary_of_your_story"
         android:inputType="textMultiLine"
         android:padding="5dp"
         android:textSize="18sp" />
@@ -58,7 +58,7 @@
         android:layout_marginEnd="109dp"
         android:layout_marginBottom="38dp"
         android:background="@color/colorPrimary"
-        android:text="Update Post"
+        android:text="@string/add_post"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
 
