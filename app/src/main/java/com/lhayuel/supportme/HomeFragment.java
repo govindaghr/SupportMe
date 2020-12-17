@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment {
 
     private void DisplayAllUsersPosts()
     {
-        Query SortPostsInDecendingOrder = PostsRef.orderByChild("counter");
+        Query SortPostsInDecendingOrder = PostsRef.orderByChild("date");
 
         FirebaseRecyclerOptions<Posts> options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(SortPostsInDecendingOrder, Posts.class).build();
         FirebaseRecyclerAdapter<Posts, PostsViewHolder> firebaseRecyclerAdapter =
