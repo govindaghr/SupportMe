@@ -73,8 +73,8 @@ public class ReadMyStoryActivity extends AppCompatActivity {
 
         //Comments
         CommentsList = (RecyclerView) findViewById(R.id.comments_list);
-        CommentsList.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        //CommentsList.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ReadMyStoryActivity.this);
         linearLayoutManager.setReverseLayout(true); //shows last comment on top
         linearLayoutManager.setStackFromEnd(true);
         CommentsList.setLayoutManager(linearLayoutManager);
@@ -89,7 +89,7 @@ public class ReadMyStoryActivity extends AppCompatActivity {
                 {
                     description = Objects.requireNonNull(dataSnapshot.child("description").getValue()).toString();
                     image = Objects.requireNonNull(dataSnapshot.child("postimage").getValue()).toString();
-                    databaseUserID = Objects.requireNonNull(dataSnapshot.child("uid").getValue()).toString();
+                    //databaseUserID = Objects.requireNonNull(dataSnapshot.child("uid").getValue()).toString();
                     postTitle = Objects.requireNonNull(dataSnapshot.child("title").getValue()).toString();
                     databaseUserID = Objects.requireNonNull(dataSnapshot.child("username").getValue()).toString();
 

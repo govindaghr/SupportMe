@@ -1,19 +1,20 @@
 package com.lhayuel.supportme;
 
 public class Comments {
-    public String comment, date, time, username;
+    public String comment, date, time, username, uid;
 
     public Comments()
     {
 
     }
 
-    public Comments(String comment, String date, String time, String username)
+    public Comments(String comment, String date, String time, String username, String uid)
     {
         this.comment = comment;
         this.date = date;
         this.time = time;
         this.username = username;
+        this.uid = uid;
     }
 
     public String getComment()
@@ -54,5 +55,13 @@ public class Comments {
     public void setUsername(String username)
     {
         this.username = username;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

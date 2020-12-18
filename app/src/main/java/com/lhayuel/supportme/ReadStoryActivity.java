@@ -76,12 +76,12 @@ public class ReadStoryActivity extends AppCompatActivity {
 
         //Comments
         CommentsList = (RecyclerView) findViewById(R.id.comments_list);
-        CommentsList.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        //CommentsList.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ReadStoryActivity.this);
         //linearLayoutManager.setReverseLayout(true); //shows last comment on top
         //linearLayoutManager.setStackFromEnd(true);
         CommentsList.setLayoutManager(linearLayoutManager);
-        etComment = (EditText) findViewById(R.id.comment_input);
+        etComment = findViewById(R.id.comment_input);
 
 
         ClickPostRef.addValueEventListener(new ValueEventListener()
@@ -93,7 +93,6 @@ public class ReadStoryActivity extends AppCompatActivity {
                 {
                     description = Objects.requireNonNull(dataSnapshot.child("description").getValue()).toString();
                     image = Objects.requireNonNull(dataSnapshot.child("postimage").getValue()).toString();
-                    databaseUserID = Objects.requireNonNull(dataSnapshot.child("uid").getValue()).toString();
                     postTitle = Objects.requireNonNull(dataSnapshot.child("title").getValue()).toString();
                     databaseUserID = Objects.requireNonNull(dataSnapshot.child("username").getValue()).toString();
 
@@ -137,7 +136,10 @@ public class ReadStoryActivity extends AppCompatActivity {
 
         CommentsList.setAdapter(firebaseRecyclerAdapter);
         firebaseRecyclerAdapter.startListening();
+        //firebaseRecyclerAdapter.notifyDataSetChanged();
     }
+
+
 
     public void postComment(View view) {
         UsersRef.child(currentUserID).addValueEventListener(new ValueEventListener()
@@ -158,7 +160,7 @@ public class ReadStoryActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError)
             {
-
+                //
             }
         });
     }

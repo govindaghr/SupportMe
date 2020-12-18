@@ -33,7 +33,7 @@ public class Posts {
         return username;
     }
 
-    /*public void setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
     public String getUid() {
@@ -59,5 +59,6 @@ public class Posts {
     }
     public void setUsername(String username) {
         this.username = username;
-    }*/
+    }
+
 }

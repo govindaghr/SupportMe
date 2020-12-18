@@ -70,7 +70,7 @@ public class MyStoryFragment extends Fragment {
 
     private void DisplayMyAllPosts()
     {
-        Query SortPostsInDecendingOrder = PostsRef.orderByChild("counter");
+        //Query SortPostsInDecendingOrder = PostsRef.orderByChild("date");//orderByChild("counter")
 
         Query myPostsQuery = PostsRef.orderByChild("uid").startAt(currentUserID).endAt(currentUserID + "\uf8ff");
 
